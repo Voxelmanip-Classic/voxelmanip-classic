@@ -1,5 +1,5 @@
 
-minecraftnt = {}
+voxelmanip = {}
 
 -- Less verbose file include function taken from NodeCore
 local include = rawget(_G, "include") or function(...)

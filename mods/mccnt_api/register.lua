@@ -1,7 +1,7 @@
 
 -- register_node wrapper for minecraftn't classic
 
-function minecraftnt.register_block(name, def)
+function voxelmanip.register_block(name, def)
 	if not def.groups then def.groups = {} end
 	if not def.unbreakable then
 		def.groups.instantly = 3

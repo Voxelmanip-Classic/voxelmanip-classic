@@ -1,5 +1,5 @@
 
-local register = minecraftnt.register_block
+local register = voxelmanip.register_block
 
 register('cobblestone_slab', {
 	order = 50,
