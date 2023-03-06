@@ -35,9 +35,10 @@ function get_creative_formspec(page)
 	return formspec_wrapper([[
 		formspec_version[4]
 		size[14.45,10.9]
-		box[0,0;14.45,10.9;#0000ff10]
+		no_prepend[]
+		box[0,0;14.45,10.9;#0000ff15]
 		style[lbl_sel;border=false]
-		style[inv_prev,inv_next;border=false;bgimg=mccnt_gui_btn.png;bgimg_pressed=mccnt_gui_btn_hover.png;bgimg_middle=1,1;font=bold;font_size=+4]
+		style[inv_prev,inv_next;border=false;bgimg=vmc_gui_btn.png;bgimg_pressed=vmc_gui_btn_hover.png;bgimg_middle=1,1;font=bold;font_size=+4]
 		button[0,0;14.45,1;lbl_sel;Select block]
 		label[13.1,0.5;${pageind}]
 

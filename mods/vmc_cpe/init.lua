@@ -1,5 +1,5 @@
 
-local register = voxelmanip.register_block
+local register = vmc.register_block
 
 register('cobblestone_slab', {
 	order = 50,
@@ -44,7 +44,7 @@ register('fire', {
 	light_source = minetest.LIGHT_MAX-1,
 	inventory_image = terrain(38),
 	tiles = {{
-		name = "mccnt_cpe_fire.png",
+		name = "vmc_cpe_fire.png",
 		animation = {
 			type = "sheet_2d",
 			frames_w = 31,

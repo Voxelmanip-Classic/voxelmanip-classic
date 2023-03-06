@@ -1,7 +1,7 @@
 
 -- register_node wrapper for minecraftn't classic
 
-function voxelmanip.register_block(name, def)
+function vmc.register_block(name, def)
 	if not def.groups then def.groups = {} end
 	if not def.unbreakable then
 		def.groups.instantly = 3
@@ -47,4 +47,22 @@ function voxelmanip.register_block(name, def)
 	end
 
 	minetest.register_node(":minecraft:"..name, def)
+end
+
+function vmc.register_slab(origname, order)
+	local def = table.copy(minetest.registered_nodes["minecraft:"..origname])
+
+	-- Make it a slab
+	def.drawtype = "nodebox"
+	def.paramtype = "light"
+	def.node_box = {
+		type = "fixed",
+		fixed = {
+			{-0.5, -0.5, -0.5, 0.5, 0, 0.5}
+		}
+	}
+
+	--def.order = order
+
+	minetest.register_node(":minecraft:"..origname.."_slab", def)
 end

@@ -1,5 +1,5 @@
 
-local register = voxelmanip.register_block
+local register = vmc.register_block
 
 register('stone', {
 	order = 1,
@@ -233,6 +233,8 @@ for k, v in pairs(wool_colors) do
 		sound = 'cloth',
 	})
 	i = i + 1
+
+	--vmc.register_slab(v['id'].."_wool")
 end
 
 register('yellow_flower', {

@@ -1,6 +1,6 @@
 -- player/init.lua
 
-dofile(minetest.get_modpath("mccnt_player") .. "/api.lua")
+dofile(minetest.get_modpath("vmc_player") .. "/api.lua")
 
 -- Default player appearance
 player_api.register_model("character.b3d", {
@@ -16,7 +16,7 @@ player_api.register_model("character.b3d", {
 		sit       = {x = 81,  y = 160},
 	},
 	collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
-	stepheight = 0.6,
+	stepheight = 1.1,
 	eye_height = 1.47,
 })
 
@@ -35,7 +35,7 @@ minetest.register_on_joinplayer(function(player)
 	player:override_day_night_ratio(1)
 
 	local name = player:get_player_name():lower()
-	local skin = io.open(minetest.get_modpath("mccnt_player").."/textures/character_"..name..".png")
+	local skin = io.open(minetest.get_modpath("vmc_player").."/textures/character_"..name..".png")
 	if skin ~= nil then
 		player_api.set_textures(player, {"character_"..name..".png"})
 	end

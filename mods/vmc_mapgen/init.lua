@@ -1,7 +1,7 @@
 
 local data = {}
 
-minetest.register_node("mccnt_mapgen:invisible_bedrock", {
+minetest.register_node("vmc_mapgen:invisible_bedrock", {
 	description = "Invisible Bedrock",
 	drawtype = "airlike",
 	paramtype = "light",
@@ -12,7 +12,7 @@ minetest.register_node("mccnt_mapgen:invisible_bedrock", {
 	groups = { not_in_creative_inventory = 1 }
 })
 
-minetest.register_node("mccnt_mapgen:solid_water", {
+minetest.register_node("vmc_mapgen:solid_water", {
 	description = "Solid Water",
 	drawtype = "glasslike",
 	tiles = { "solid_water.png" },
@@ -24,13 +24,17 @@ minetest.register_node("mccnt_mapgen:solid_water", {
 	groups = { not_in_creative_inventory = 1 }
 })
 
+for _,node in ipairs({'invisible_bedrock', 'solid_water'}) do
+	minetest.register_alias('mccnt_mapgen:'..node, 'vmc_mapgen:'..node)
+end
+
 local mg = {
 	blocks = {
 		grass = minetest.get_content_id("minecraft:grass"),
 		dirt = minetest.get_content_id("minecraft:dirt"),
 		bedrock = minetest.get_content_id("minecraft:bedrock"),
-		invisible_bedrock = minetest.get_content_id("mccnt_mapgen:invisible_bedrock"),
-		solid_water = minetest.get_content_id("mccnt_mapgen:solid_water"),
+		invisible_bedrock = minetest.get_content_id("vmc_mapgen:invisible_bedrock"),
+		solid_water = minetest.get_content_id("vmc_mapgen:solid_water"),
 	},
 	size = 128,
 	depth = 64
