@@ -30,9 +30,9 @@ end
 
 local mg = {
 	blocks = {
-		grass = minetest.get_content_id("minecraft:grass"),
-		dirt = minetest.get_content_id("minecraft:dirt"),
-		bedrock = minetest.get_content_id("minecraft:bedrock"),
+		grass = minetest.get_content_id("vmc:grass"),
+		dirt = minetest.get_content_id("vmc:dirt"),
+		bedrock = minetest.get_content_id("vmc:bedrock"),
 		invisible_bedrock = minetest.get_content_id("vmc_mapgen:invisible_bedrock"),
 		solid_water = minetest.get_content_id("vmc_mapgen:solid_water"),
 	},

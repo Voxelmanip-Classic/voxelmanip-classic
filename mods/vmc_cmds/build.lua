@@ -38,7 +38,7 @@ minetest.register_chatcommand("place", {
 		pos = vector.round(pos)
 
 		if minetest.get_node(pos).name == "air" then
-			minetest.place_node(pos, { name = "minecraft:stone" })
+			minetest.place_node(pos, { name = "vmc:stone" })
 			minetest.chat_send_player(name, yellow("Successfully placed block at position."))
 		end
 	end

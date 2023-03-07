@@ -46,11 +46,14 @@ function vmc.register_block(name, def)
 		end
 	end
 
-	minetest.register_node(":minecraft:"..name, def)
+	minetest.register_node(":vmc:"..name, def)
+
+	-- compatibility
+	minetest.register_alias("minecraft:"..name, "vmc:"..name)
 end
 
 function vmc.register_slab(origname, order)
-	local def = table.copy(minetest.registered_nodes["minecraft:"..origname])
+	local def = table.copy(minetest.registered_nodes["vmc:"..origname])
 
 	-- Make it a slab
 	def.drawtype = "nodebox"
@@ -64,5 +67,5 @@ function vmc.register_slab(origname, order)
 
 	--def.order = order
 
-	minetest.register_node(":minecraft:"..origname.."_slab", def)
+	minetest.register_node(":vmc:"..origname.."_slab", def)
 end

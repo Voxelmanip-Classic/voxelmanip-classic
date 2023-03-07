@@ -7,15 +7,15 @@ minetest.register_on_joinplayer(function(player)
 	player:hud_set_hotbar_selected_image("vmc_gui_hotbar_selected.png")
 
 	local default_blocks = {
-		"minecraft:stone",
-		"minecraft:cobblestone",
-		"minecraft:bricks",
-		"minecraft:dirt",
-		"minecraft:wood",
-		"minecraft:log",
-		"minecraft:leaves",
-		"minecraft:glass",
-		"minecraft:stone_slab"
+		"vmc:stone",
+		"vmc:cobblestone",
+		"vmc:bricks",
+		"vmc:dirt",
+		"vmc:wood",
+		"vmc:log",
+		"vmc:leaves",
+		"vmc:glass",
+		"vmc:stone_slab"
 	}
 
 	local i = 1
