@@ -1,0 +1,3 @@
+[submodule "mods/no_touch_griefer"]
+	path = mods/no_touch_griefer
+	url = https://github.com/rollerozxa/no-touch-griefer
