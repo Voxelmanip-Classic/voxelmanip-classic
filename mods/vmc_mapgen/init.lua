@@ -1,5 +1,5 @@
 
-local data = {}
+
 
 minetest.register_node("vmc_mapgen:invisible_bedrock", {
 	description = "Invisible Bedrock",
@@ -28,19 +28,18 @@ for _,node in ipairs({'invisible_bedrock', 'solid_water'}) do
 	minetest.register_alias('mccnt_mapgen:'..node, 'vmc_mapgen:'..node)
 end
 
-local mg = {
-	blocks = {
-		grass = minetest.get_content_id("vmc:grass"),
-		dirt = minetest.get_content_id("vmc:dirt"),
-		bedrock = minetest.get_content_id("vmc:bedrock"),
-		invisible_bedrock = minetest.get_content_id("vmc_mapgen:invisible_bedrock"),
-		solid_water = minetest.get_content_id("vmc_mapgen:solid_water"),
-	},
-	size = 128,
-	depth = 64
+local data = {}
+
+local nodes = {
+	grass = minetest.get_content_id("vmc:grass"),
+	dirt = minetest.get_content_id("vmc:dirt"),
+	bedrock = minetest.get_content_id("vmc:bedrock"),
+	invisible_bedrock = minetest.get_content_id("vmc_mapgen:invisible_bedrock"),
+	solid_water = minetest.get_content_id("vmc_mapgen:solid_water"),
 }
 
-if minetest.get_mapgen_setting('mg_name') == "singlenode" then
+local width = 128
+local depth = 64
 
 minetest.register_on_generated(function(minp, maxp, blockseed)
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
@@ -51,30 +50,30 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 	for y = minp.y, maxp.y do
 		local posi = area:index(minp.x, y, z)
 		for x = minp.x, maxp.x do
-			if (x >= -mg.size and x <= mg.size) and (z >= -mg.size and z <= mg.size) then
-				if y >= -mg.depth and y <= -1 then
-					data[posi] = mg.blocks.dirt
+			if (x >= -width and x <= width) and (z >= -width and z <= width) then
+				if y >= -depth and y <= -1 then
+					data[posi] = nodes.dirt
 				elseif y == 0 then
-					data[posi] = mg.blocks.grass
-				elseif y == -mg.depth -1 then
-					data[posi] = mg.blocks.bedrock
+					data[posi] = nodes.grass
+				elseif y == -depth -1 then
+					data[posi] = nodes.bedrock
 				end
-			elseif y >= -mg.depth -1 and y <= -3 then
-				if		(x == -mg.size -1 and (z >= -mg.size -1 and z <= mg.size +1))
-					or	(x ==  mg.size +1 and (z >= -mg.size -1 and z <= mg.size +1))
-					or	(z == -mg.size -1 and (x >= -mg.size -1 and x <= mg.size +1))
-					or	(z ==  mg.size +1 and (x >= -mg.size -1 and x <= mg.size +1))
-					or (y == -3 and (x > mg.size +1 or x < -mg.size -1 or z > mg.size +1 or z < -mg.size -1)) then
-					data[posi] = mg.blocks.bedrock
+			elseif y >= -depth -1 and y <= -3 then
+				if		(x == -width -1 and (z >= -width -1 and z <= width +1))
+					or	(x ==  width +1 and (z >= -width -1 and z <= width +1))
+					or	(z == -width -1 and (x >= -width -1 and x <= width +1))
+					or	(z ==  width +1 and (x >= -width -1 and x <= width +1))
+					or (y == -3 and (x > width +1 or x < -width -1 or z > width +1 or z < -width -1)) then
+					data[posi] = nodes.bedrock
 				end
 			elseif y >= 0 and (
-						(x == -mg.size -1 and (z >= -mg.size -1 and z <= mg.size +1))
-					or	(x ==  mg.size +1 and (z >= -mg.size -1 and z <= mg.size +1))
-					or	(z == -mg.size -1 and (x >= -mg.size -1 and x <= mg.size +1))
-					or	(z ==  mg.size +1 and (x >= -mg.size -1 and x <= mg.size +1))) then
-				data[posi] = mg.blocks.invisible_bedrock
+						(x == -width -1 and (z >= -width -1 and z <= width +1))
+					or	(x ==  width +1 and (z >= -width -1 and z <= width +1))
+					or	(z == -width -1 and (x >= -width -1 and x <= width +1))
+					or	(z ==  width +1 and (x >= -width -1 and x <= width +1))) then
+				data[posi] = nodes.invisible_bedrock
 			elseif y < 0 and y > -3 then
-				data[posi] = mg.blocks.solid_water
+				data[posi] = nodes.solid_water
 			end
 
 			posi = posi + 1
@@ -85,4 +84,19 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 	vm:write_to_map()
 end)
 
-end
+local bound = width+1
+
+minetest.register_globalstep(function(dtime)
+	for _,player in ipairs(minetest.get_connected_players()) do
+		local pos = player:get_pos()
+
+		if (pos.x < -bound or pos.x > bound or pos.z < -bound or pos.z > bound
+		or pos.y < -depth-1 or pos.y > 1000) and player:get_player_name() ~= 'singleplayer' then
+			pos.x = math.clamp(pos.x, -bound, bound)
+			pos.y = math.clamp(pos.y, -depth-1, 1000)
+			pos.z = math.clamp(pos.z, -bound, bound)
+
+			player:set_pos(pos)
+		end
+	end
+end)
