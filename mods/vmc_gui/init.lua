@@ -1,6 +1,11 @@
 -- Code related to the GUI
 
 minetest.register_on_joinplayer(function(player)
+	player:get_inventory():set_size("main", 9)
+	player:get_inventory():set_size("craft", 0)
+	player:get_inventory():set_size("craftpreview", 0)
+	player:get_inventory():set_size("craftresult", 0)
+
 	player:hud_set_hotbar_itemcount(9)
 
 	player:hud_set_hotbar_image("vmc_gui_hotbar.png")

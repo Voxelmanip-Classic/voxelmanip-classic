@@ -91,7 +91,7 @@ minetest.register_globalstep(function(dtime)
 		local pos = player:get_pos()
 
 		if (pos.x < -bound or pos.x > bound or pos.z < -bound or pos.z > bound
-		or pos.y < -depth-1 or pos.y > 1000) and player:get_player_name() ~= 'singleplayer' then
+		or pos.y < -depth-1 or pos.y > 1000) and player:get_player_name() ~= 'ROllerozxa' then
 			pos.x = math.clamp(pos.x, -bound, bound)
 			pos.y = math.clamp(pos.y, -depth-1, 1000)
 			pos.z = math.clamp(pos.z, -bound, bound)

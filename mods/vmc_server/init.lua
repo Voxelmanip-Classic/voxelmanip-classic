@@ -118,3 +118,18 @@ minetest.register_chatcommand("welcome", {
 		show_welcome_formspec(name)
 	end
 })
+
+minetest.register_chatcommand("pruneplayers", {
+	params = "",
+	privs = { server = true },
+	func = function(name, param)
+		local handler = minetest.get_auth_handler()
+
+		for name in handler.iterate() do
+			if not verified(name) then
+				minetest.remove_player(name)
+				minetest.remove_player_auth(name)
+			end
+		end
+	end
+})
