@@ -1,7 +1,7 @@
 
 minetest.register_abm({
 	label = "Turn dirt into grass",
-	nodenames = {"minecraft:dirt"},
+	nodenames = {"vmc:dirt"},
 	neighbors = {"air"},
 	interval = 2,
 	chance = 2,
@@ -12,6 +12,6 @@ minetest.register_abm({
 			return
 		end
 
-		minetest.set_node(pos, {name = "minecraft:grass"})
+		minetest.set_node(pos, {name = "vmc:grass"})
 	end
 })

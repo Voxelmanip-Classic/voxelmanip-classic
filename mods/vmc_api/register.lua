@@ -1,5 +1,5 @@
 
--- register_node wrapper for minecraftn't classic
+-- register_node wrapper for voxelmanip classic
 
 function vmc.register_block(name, def)
 	if not def.groups then def.groups = {} end

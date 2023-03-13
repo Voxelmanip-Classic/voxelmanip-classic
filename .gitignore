@@ -2,3 +2,5 @@ _todo_resources/
 
 .vscode/
 *.patch
+*.xcf
+h
