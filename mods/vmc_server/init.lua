@@ -121,14 +121,16 @@ minetest.register_chatcommand("welcome", {
 
 minetest.register_chatcommand("pruneplayers", {
 	params = "",
+	description = "Prune players who haven't been verified.",
 	privs = { server = true },
 	func = function(name, param)
 		local handler = minetest.get_auth_handler()
 
-		for name in handler.iterate() do
-			if not verified(name) then
-				minetest.remove_player(name)
-				minetest.remove_player_auth(name)
+		for pname in handler.iterate() do
+			if not verified(pname) then
+				minetest.chat_send_player(name, yellow(pname.." has not been verified, pruning them..."))
+				minetest.remove_player(pname)
+				minetest.remove_player_auth(pname)
 			end
 		end
 	end
