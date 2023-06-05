@@ -38,7 +38,7 @@ local nodes = {
 	solid_water = minetest.get_content_id("vmc_mapgen:solid_water"),
 }
 
-local width = 128
+local width = 256
 local depth = 64
 
 minetest.register_on_generated(function(minp, maxp, blockseed)

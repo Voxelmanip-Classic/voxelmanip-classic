@@ -5,7 +5,7 @@ local hypertext_text = [[
 
 <b>-</b>
 This is a server that aims to recreate the simple creative freebuild gameplay that existed in Minecraft Classic.
-The world is currently 256x256 in size, but may expand in the future. Build something cool and have a great time around here.
+The world is currently 512x512 in size, but may expand in the future. Build something cool and have a great time around here.
 
 <big>Rules</big>
 <img name=blank.png width=32 height=1>1. <b>No griefing.</b> We have rollback functionality in place which can revert any griefing instantly, you're just wasting your time.
