@@ -15,7 +15,8 @@ minetest.register_node("vmc_mapgen:invisible_bedrock", {
 minetest.register_node("vmc_mapgen:solid_water", {
 	description = "Solid Water",
 	drawtype = "glasslike",
-	tiles = { "solid_water.png" },
+	tiles = { terrain(14) },
+	use_texture_alpha = "opaque",
 	paramtype = "light",
 	pointable = false,
 	diggable = false,
@@ -46,6 +47,8 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 	local area = VoxelArea:new{MinEdge = emin, MaxEdge = emax}
 	vm:get_data(data)
 
+	written = false
+
 	for z = minp.z, maxp.z do
 	for y = minp.y, maxp.y do
 		local posi = area:index(minp.x, y, z)
@@ -53,10 +56,13 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 			if (x >= -width and x <= width) and (z >= -width and z <= width) then
 				if y >= -depth and y <= -1 then
 					data[posi] = nodes.dirt
+					written = true
 				elseif y == 0 then
 					data[posi] = nodes.grass
+					written = true
 				elseif y == -depth -1 then
 					data[posi] = nodes.bedrock
+					written = true
 				end
 			elseif y >= -depth -1 and y <= -3 then
 				if		(x == -width -1 and (z >= -width -1 and z <= width +1))
@@ -65,6 +71,7 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 					or	(z ==  width +1 and (x >= -width -1 and x <= width +1))
 					or (y == -3 and (x > width +1 or x < -width -1 or z > width +1 or z < -width -1)) then
 					data[posi] = nodes.bedrock
+					written = true
 				end
 			elseif y >= 0 and (
 						(x == -width -1 and (z >= -width -1 and z <= width +1))
@@ -72,16 +79,20 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 					or	(z == -width -1 and (x >= -width -1 and x <= width +1))
 					or	(z ==  width +1 and (x >= -width -1 and x <= width +1))) then
 				data[posi] = nodes.invisible_bedrock
+				written = true
 			elseif y < 0 and y > -3 then
 				data[posi] = nodes.solid_water
+				written = true
 			end
 
 			posi = posi + 1
 		end
 	end end
 
-	vm:set_data(data)
-	vm:write_to_map()
+	if written then
+		vm:set_data(data)
+		vm:write_to_map()
+	end
 end)
 
 local bound = width+1
@@ -91,9 +102,9 @@ minetest.register_globalstep(function(dtime)
 		local pos = player:get_pos()
 
 		if (pos.x < -bound or pos.x > bound or pos.z < -bound or pos.z > bound
-		or pos.y < -depth-1 or pos.y > 1000) and player:get_player_name() ~= 'ROllerozxa' then
+		or pos.y < -depth-1 or pos.y > 512) and player:get_player_name() ~= 'ROllerozxa' then
 			pos.x = math.clamp(pos.x, -bound, bound)
-			pos.y = math.clamp(pos.y, -depth-1, 1000)
+			pos.y = math.clamp(pos.y, -depth-1, 512)
 			pos.z = math.clamp(pos.z, -bound, bound)
 
 			player:set_pos(pos)
