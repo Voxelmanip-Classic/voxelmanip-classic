@@ -1,9 +1,6 @@
 [submodule "mods/no_touch_griefer"]
 	path = mods/no_touch_griefer
 	url = https://github.com/rollerozxa/no-touch-griefer
-[submodule "mods/flyspeed"]
-	path = mods/flyspeed
-	url = https://github.com/rollerozxa/flyspeed
 [submodule "mods/xban2"]
 	path = mods/xban2
 	url = https://github.com/minetest-mods/xban2
