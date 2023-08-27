@@ -1,10 +1,10 @@
 
-minetest.register_abm({
+minetest.register_abm{
 	label = "Turn dirt into grass",
 	nodenames = {"vmc:dirt"},
 	neighbors = {"air"},
-	interval = 2,
-	chance = 2,
+	interval = 16,
+	chance = 16,
 	catch_up = false,
 	action = function(pos, node)
 		local above = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -14,4 +14,4 @@ minetest.register_abm({
 
 		minetest.set_node(pos, {name = "vmc:grass"})
 	end
-})
+}

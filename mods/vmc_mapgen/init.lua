@@ -47,7 +47,7 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 	local area = VoxelArea:new{MinEdge = emin, MaxEdge = emax}
 	vm:get_data(data)
 
-	written = false
+	local written = false
 
 	for z = minp.z, maxp.z do
 	for y = minp.y, maxp.y do
@@ -87,7 +87,8 @@ minetest.register_on_generated(function(minp, maxp, blockseed)
 
 			posi = posi + 1
 		end
-	end end
+	end
+	end
 
 	if written then
 		vm:set_data(data)
