@@ -59,16 +59,12 @@ register('cobweb', {
 	inventory_image = terrain2(1),
 	sound = 'cloth',
 	liquid_viscosity = 14,
-	liquidtype = "source",
-	liquid_alternative_flowing = "vmc:cobweb",
-	liquid_alternative_source = "vmc:cobweb",
-	liquid_renewable = false,
-	liquid_range = 0,
+	liquidtype = "none",
 	walkable = false,
 })
 register('clay', {
 	description = 'Clay',
-	tiles = { terrain(85) },
+	tiles = terrain(85),
 	sound = 'dirt',
 })
 
@@ -80,7 +76,7 @@ register('cyan_flower', {
 
 register('diamond_ore', {
 	description = "Diamond Ore",
-	tiles = { terrain2(3) },
+	tiles = terrain2(3),
 	sound = 'stone',
 })
 register('diamond_block', {
@@ -111,7 +107,7 @@ register('birch_log', {
 })
 register('birch_planks', {
 	description = "Birch Planks",
-	tiles = { terrain2(20) },
+	tiles = terrain2(20),
 	sound = 'wood',
 })
 
@@ -125,26 +121,26 @@ register('spruce_log', {
 })
 register('spruce_planks', {
 	description = "Spruce Planks",
-	tiles = { terrain2(36) },
+	tiles = terrain2(36),
 	sound = 'wood',
 })
 
 register('glowstone', {
 	description = "Glowstone",
-	tiles = { terrain2(4) },
+	tiles = terrain2(4),
 	light_source = minetest.LIGHT_MAX-1,
 	sound = 'glass',
 })
 
 register('nether_reactor', {
 	description = "Nether Reactor",
-	tiles = { terrain2(5) },
+	tiles = terrain2(5),
 	sound = 'glass',
 })
 
 register('chair', {
 	description = "Chair",
-	tiles = { terrain(4) },
+	tiles = terrain(4),
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
@@ -164,7 +160,7 @@ register('chair', {
 
 register('table', {
 	description = "Table",
-	tiles = { terrain(4) },
+	tiles = terrain(4),
 	drawtype = "nodebox",
 	paramtype = "light",
 	node_box = {
@@ -182,57 +178,57 @@ register('table', {
 
 register('granite', {
 	description = "Granite",
-	tiles = { terrain2(6) },
+	tiles = terrain2(6),
 	sound = 'stone',
 })
 register('polished_granite', {
 	description = "Polished Granite",
-	tiles = { terrain2(22) },
+	tiles = terrain2(22),
 	sound = 'stone',
 })
 
 register('diorite', {
 	description = "Diorite",
-	tiles = { terrain2(7) },
+	tiles = terrain2(7),
 	sound = 'stone',
 })
 register('polished_diorite', {
 	description = "Polished Diorite",
-	tiles = { terrain2(23) },
+	tiles = terrain2(23),
 	sound = 'stone',
 })
 
 register('andesite', {
 	description = "Andesite",
-	tiles = { terrain2(8) },
+	tiles = terrain2(8),
 	sound = 'stone',
 })
 register('polished_andesite', {
 	description = "Polished Andesite",
-	tiles = { terrain2(24) },
+	tiles = terrain2(24),
 	sound = 'stone',
 })
 
 register('stone_brick_cracked', {
 	description = "Cracked Stone Brick",
-	tiles = { terrain2(21) },
+	tiles = terrain2(21),
 	sound = 'stone',
 })
 
 register('stone_brick_mossy', {
 	description = "Mossy Stone Brick",
-	tiles = { terrain2(37) },
+	tiles = terrain2(37),
 	sound = 'stone',
 })
 
 register('stone_brick_chiseled', {
 	description = "Chiseled Stone Brick",
-	tiles = { terrain2(38) },
+	tiles = terrain2(38),
 	sound = 'stone',
 })
 
 register("very_black_wool", {
 	description = "Very Black Wool",
-	tiles = { terrain2(64) },
+	tiles = terrain2(64),
 	sound = 'cloth',
 })

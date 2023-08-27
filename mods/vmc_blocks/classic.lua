@@ -4,7 +4,7 @@ local register = vmc.register_block
 register('stone', {
 	order = 1,
 	description = "Stone",
-	tiles = { terrain(1) },
+	tiles = terrain(1),
 	sound = 'stone',
 })
 register('grass', {
@@ -20,19 +20,19 @@ register('grass', {
 register('dirt', {
 	order = 3,
 	description = "Dirt",
-	tiles = { terrain(2) },
+	tiles = terrain(2),
 	sound = 'gravel',
 })
 register('cobblestone', {
 	order = 4,
 	description = "Cobblestone",
-	tiles = { terrain(16) },
+	tiles = terrain(16),
 	sound = 'stone',
 })
 register('wood', {
 	order = 5,
 	description = "Wood",
-	tiles = { terrain(4) },
+	tiles = terrain(4),
 	sound = 'wood',
 })
 register('sapling', {
@@ -44,7 +44,7 @@ register('sapling', {
 register('bedrock', {
 	order = 7,
 	description = "Bedrock",
-	tiles = { terrain(17) },
+	tiles = terrain(17),
 	sound = 'stone',
 	unbreakable = true,
 	admin_block = true
@@ -53,21 +53,15 @@ register('water', {
 	order = 8,
 	description = "Water",
 	drawtype = "liquid",
-	tiles = { terrain(14) },
+	tiles = terrain(14),
 	use_texture_alpha = "blend",
 	paramtype = "light",
-	walkable = false,
-	pointable = false,
-	diggable = false,
-	buildable_to = true,
-	is_ground_content = false,
-	drowning = 1,
 	liquidtype = "source",
 	liquid_alternative_flowing = "vmc:water",
 	liquid_alternative_source = "vmc:water",
-	liquid_viscosity = 1,
+	liquid_viscosity = 0,
 	liquid_range = 0,
-	post_effect_color = {a = 128, r = 0, g = 0, b = 255},
+	post_effect_color = {a = 128, r = 63, g = 63, b = 255},
 	groups = {water = 3, liquid = 3},
 	waving = 3,
 	admin_block = true
@@ -76,38 +70,23 @@ register('still_water', {
 	order = 9,
 	description = "Still Water",
 	drawtype = "liquid",
-	tiles = { terrain(14) },
+	tiles = terrain(14),
 	use_texture_alpha = "blend",
 	paramtype = "light",
-	walkable = false,
-	pointable = false,
-	diggable = false,
-	buildable_to = true,
-	is_ground_content = false,
-	drowning = 1,
-	liquidtype = "source",
-	liquid_alternative_flowing = "vmc:water",
-	liquid_alternative_source = "vmc:water",
+	liquidtype = "none",
 	liquid_viscosity = 7,
 	liquid_range = 0,
-	post_effect_color = {a = 128, r = 0, g = 0, b = 255},
+	post_effect_color = {a = 128, r = 63, g = 63, b = 255},
 	groups = {water = 3, liquid = 3},
-	waving = 3,
-	admin_block = true
+	waving = 3
 })
 register('lava', {
 	order = 10,
 	description = "Lava",
 	drawtype = "liquid",
-	tiles = { terrain(30) },
+	tiles = terrain(30),
 	use_texture_alpha = "blend",
 	paramtype = "light",
-	walkable = false,
-	pointable = false,
-	diggable = false,
-	buildable_to = true,
-	is_ground_content = false,
-	drowning = 1,
 	liquidtype = "source",
 	liquid_alternative_flowing = "vmc:lava",
 	liquid_alternative_source = "vmc:lava",
@@ -122,53 +101,44 @@ register('still_lava', {
 	order = 11,
 	description = "Still Lava",
 	drawtype = "liquid",
-	tiles = { terrain(30) },
+	tiles = terrain(30),
 	use_texture_alpha = "blend",
 	paramtype = "light",
-	walkable = false,
-	pointable = false,
-	diggable = false,
-	buildable_to = true,
-	is_ground_content = false,
-	drowning = 1,
-	liquidtype = "source",
-	liquid_alternative_flowing = "vmc:lava",
-	liquid_alternative_source = "vmc:lava",
+	liquidtype = "none",
 	liquid_viscosity = 7,
 	liquid_range = 0,
 	post_effect_color = {a = 191, r = 255, g = 64, b = 0},
 	groups = {water = 3, liquid = 3},
-	waving = 3,
-	admin_block = true
+	waving = 3
 })
 register('sand', {
 	order = 12,
 	description = "Sand",
-	tiles = { terrain(18) },
+	tiles = terrain(18),
 	sound = 'sand',
 })
 register('gravel', {
 	order = 13,
 	description = "Gravel",
-	tiles = { terrain(19) },
+	tiles = terrain(19),
 	sound = 'gravel',
 })
 register('gold_ore', {
 	order = 14,
 	description = "Gold Ore",
-	tiles = { terrain(32) },
+	tiles = terrain(32),
 	sound = 'stone',
 })
 register('iron_ore', {
 	order = 15,
 	description = "Iron Ore",
-	tiles = { terrain(33) },
+	tiles = terrain(33),
 	sound = 'stone',
 })
 register('coal_ore', {
 	order = 16,
 	description = "Coal Ore",
-	tiles = { terrain(34) },
+	tiles = terrain(34),
 	sound = 'stone',
 })
 register('log', {
@@ -184,7 +154,7 @@ register('leaves', {
 	order = 18,
 	description = "Leaves",
 	drawtype = "allfaces_optional",
-	tiles = { terrain(22) },
+	tiles = terrain(22),
 	paramtype = "light",
 	waving = 2,
 	sound = 'grass',
@@ -192,7 +162,7 @@ register('leaves', {
 register('sponge', {
 	order = 19,
 	description = "Sponge",
-	tiles = { terrain(48) },
+	tiles = terrain(48),
 	sound = 'grass',
 })
 register('glass', {
@@ -229,7 +199,7 @@ for k, v in pairs(wool_colors) do
 	register(v['id'].."_wool", {
 		order = 21+i,
 		description = v['name'].." Wool",
-		tiles = { terrain(i+64) },
+		tiles = terrain(i+64),
 		sound = 'cloth',
 	})
 	i = i + 1
@@ -310,7 +280,7 @@ register('stone_slab', {
 register('bricks', {
 	order = 45,
 	description = "Bricks",
-	tiles = { terrain(7) },
+	tiles = terrain(7),
 	sound = 'stone',
 })
 register('tnt', {
@@ -334,12 +304,12 @@ register('bookshelf', {
 register('mossy_cobblestone', {
 	order = 48,
 	description = "Mossy Cobblestone",
-	tiles = { terrain(36) },
+	tiles = terrain(36),
 	sound = 'stone',
 })
 register('obsidian', {
 	order = 49,
 	description = "Obsidian",
-	tiles = { terrain(37) },
+	tiles = terrain(37),
 	sound = 'stone',
 })

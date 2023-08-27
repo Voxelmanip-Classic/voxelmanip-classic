@@ -14,14 +14,11 @@ minetest.register_node("vmc_mapgen:invisible_bedrock", {
 
 minetest.register_node("vmc_mapgen:solid_water", {
 	description = "Solid Water",
-	drawtype = "glasslike",
 	tiles = { terrain(14) },
 	use_texture_alpha = "opaque",
-	paramtype = "light",
 	pointable = false,
 	diggable = false,
 	buildable_to = false,
-	sunlight_propagates = true,
 	groups = { not_in_creative_inventory = 1 }
 })
 

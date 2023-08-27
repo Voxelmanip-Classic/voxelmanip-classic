@@ -11,6 +11,10 @@ function vmc.register_block(name, def)
 
 	def.stack_max = 1
 
+	if type(def.tiles) == 'string' then
+		def.tiles = { def.tiles }
+	end
+
 	if def.inventory_image then
 		def.tiles = def.tiles or { def.inventory_image }
 		def.drawtype = "plantlike"
@@ -30,10 +34,20 @@ function vmc.register_block(name, def)
 		}
 	end
 
+	if def.drawtype == "liquid" then
+		def.walkable = false
+		def.pointable = false
+		def.diggable = false
+		def.buildable_to = true
+
+	end
+
 	if def.sound then
 		def.sounds = block_sound(def.sound)
 		def.sound = nil
 	end
+
+	--def.description = def.order .. " - " .. def.description
 
 	if def.admin_block then
 		def.on_place = function(itemstack, placer, pointed_thing)
