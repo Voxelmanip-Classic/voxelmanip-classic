@@ -232,3 +232,9 @@ register("very_black_wool", {
 	tiles = terrain2(64),
 	sound = 'cloth',
 })
+
+register("mese_block", {
+	description = "Mese Block",
+	tiles = terrain2(9),
+	sound = 'stone',
+})
