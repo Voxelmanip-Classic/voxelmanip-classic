@@ -21,6 +21,11 @@ minetest.register_on_dignode(function(pos, oldnode, digger)
 	if painters[playername] then
 		local node = digger:get_wielded_item():get_name()
 		if node ~= "" then
+			if minetest.registered_nodes[node].admin_block then
+				minetest.chat_send_player(playername, yellow("You can't paint with an admin block!"))
+				return
+			end
+
 			minetest.set_node(pos, { name = node })
 		end
 	end
