@@ -29,7 +29,8 @@ minetest.register_on_joinplayer(function(player)
 	}
 
 	player:set_sun{
-		visible = false,
+		texture = "blank.png",
+		visible = true,
 		sunrise_visible = false
 	}
 
