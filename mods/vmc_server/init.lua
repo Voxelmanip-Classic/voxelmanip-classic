@@ -1,10 +1,10 @@
 local storage = minetest.get_mod_storage()
 
 local hypertext_text = [[
-<center><big>Welcome to <b>The Voxelmanip Classic Server</b>!</big></center>
+<center><big>Welcome to <b>Voxelmanip Classic</b>!</big></center>
 
 <b>-</b>
-This is a server that aims to recreate the simple creative freebuild gameplay that existed in Minecraft Classic.
+This is a game that aims to recreate the simple creative freebuild gameplay that existed in Minecraft Classic.
 The world is currently 512x512 in size, but may expand in the future. Build something cool and have a great time around here.
 
 <big>Rules</big>
@@ -19,7 +19,6 @@ Feel ready to start? <action name=security><style color=#00ff00>Click here to an
 local formspec_text = formspec_wrapper([[
 		formspec_version[4]
 		size[14,11]
-		no_prepend[]
 		box[0.25,0.25;13.5,9.5;#00000088]
 		hypertext[0.5,0.5;13,9;welcometext;${hypertext_text}]
 		button_exit[4.5,9.9;5,0.9;btn_confirm;OK]
@@ -27,14 +26,14 @@ local formspec_text = formspec_wrapper([[
 
 local security_formspec_text = [[
 	formspec_version[4]
-	size[13.25,7]
-	no_prepend[]
+	size[13,7.65]
 	hypertext[0.5,0.75;13,10;lol;In order to be granted interact privileges you need to answer this question.
 
-	What is the square root of  <mono>floor(pi) * 48 + ( sin(pi) * e )</mono> ?]
-	field[0.5,3.5;12,0.8;answer;;]
+	What is the square root of
+	<mono>floor(pi) * 48 + ( sin(pi) * e )</mono> ?]
+	field[0.5,4.5;12,0.8;answer;;]
 	${error}
-	button[7.5,5;5,0.9;btn_confirm;Submit]
+	button[7.5,6;5,0.9;btn_confirm;Submit]
 ]]
 
 function show_welcome_formspec(playername)
@@ -44,7 +43,7 @@ end
 function show_security_formspec(playername, wrong)
 	local errormsg = ''
 	if wrong then
-		errormsg = "label[1,5.5;"..red("Wrong answer!").."]"
+		errormsg = "label[1,6.5;"..red("Wrong answer!").."]"
 	end
 
 	minetest.show_formspec(playername, 'vmc_server:welcomescreen',

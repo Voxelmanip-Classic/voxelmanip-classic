@@ -30,8 +30,7 @@ minetest.register_on_joinplayer(function(player)
 	end
 
 	player:set_formspec_prepend([[
-		box[-0.3,-0.3;11.35,6.2;#0000ff15]
-		style_type[button;border=false;bgimg=vmc_gui_btn.png;bgimg_pressed=vmc_gui_btn_hover.png;bgimg_middle=2,2;font=bold;font_size=+4]
+		style_type[button;border=false;bgimg=ozxa_button.png;bgimg_hovered=ozxa_button_hover.png;bgimg_pressed=ozxa_button_pressed.png;bgimg_middle=2,2;font_size=+1]
 	]])
 end)
 
