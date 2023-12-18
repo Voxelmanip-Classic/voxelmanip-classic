@@ -11,7 +11,11 @@ register('grass', {
 	order = 2,
 	description = "Grass",
 	tiles = {
-		terrain(0),
+		{
+			name = "grass_tiled.png",
+			align_style = 'world',
+			scale = 16
+		},
 		terrain(2),
 		terrain(3),
 	},
