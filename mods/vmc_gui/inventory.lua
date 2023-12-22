@@ -15,6 +15,7 @@ local inv_creative = minetest.create_detached_inventory("creative", {
 	end,
 })
 
+local player_inv_data = {}
 local inventory_blocks = {}
 local max_page = 1
 local items_per_page = 66
@@ -47,7 +48,6 @@ function get_creative_formspec(page)
 
 		${prevbtn}
 		${nextbtn}
-		field[-10,-10;0,0;internal_paginator;;${page}]
 	]], {
 		start = start,
 		page = page,
@@ -60,12 +60,14 @@ end
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname ~= "" or fields.quit then return end
 
-	local page = tonumber(fields.internal_paginator)
+	local page = tonumber(player_inv_data[player:get_player_name()].page)
 	-- check for sussy page input that some impostor has fucked with!! :flushed:
 	if page == nil or type(page) ~= 'number' then return end
 
 	if fields.inv_prev then page = page - 1
 elseif fields.inv_next then page = page + 1 end
+
+	player_inv_data[player:get_player_name()].page = page
 
 	local formspec = get_creative_formspec(page)
 	player:set_inventory_formspec(formspec)
@@ -94,6 +96,13 @@ end)
 
 minetest.register_on_joinplayer(function(player)
 	player:set_inventory_formspec(get_creative_formspec(1))
+	player_inv_data[player:get_player_name()] = {
+		page = 1
+	}
+end)
+
+minetest.register_on_leaveplayer(function(player)
+	player_inv_data[player:get_player_name()] = nil
 end)
 
 local reset_blockselect = function()
