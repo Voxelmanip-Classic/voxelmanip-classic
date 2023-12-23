@@ -38,5 +38,15 @@ minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack
 	return true
 end)
 
+local old_server_status = minetest.get_server_status
+function minetest.get_server_status(name, joined)
+	minetest.chat_send_player(name,
+		yellow("Welcome to ")
+		..minetest.colorize("#3cc247", "Voxelmanip")
+		.." "
+		..minetest.colorize("#24872b", "Classic")
+		.."!")
+end
+
 --include('blockselect')
 include('inventory')
