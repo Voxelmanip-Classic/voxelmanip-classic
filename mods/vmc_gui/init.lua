@@ -40,6 +40,10 @@ end)
 
 local old_server_status = minetest.get_server_status
 function minetest.get_server_status(name, joined)
+	if not joined then
+		return old_server_status(name, joined)
+	end
+
 	minetest.chat_send_player(name,
 		yellow("Welcome to ")
 		..minetest.colorize("#3cc247", "Voxelmanip")
