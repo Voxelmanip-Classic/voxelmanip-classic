@@ -87,6 +87,14 @@ minetest.register_on_joinplayer(function(player, last_login)
 	end
 end)
 
+minetest.register_on_leaveplayer(function(player)
+	local name = player:get_player_name()
+	if not verified(name) then
+		minetest.remove_player(name)
+		minetest.remove_player_auth(name)
+	end
+end)
+
 minetest.register_on_player_receive_fields(function(player, formname, fields)
 	if formname ~= 'vmc_server:welcomescreen' then return end
 	local name = player:get_player_name()
@@ -105,7 +113,9 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		end
 	else
 		if not verified(name) then
-			minetest.chat_send_player(name, yellow("Use /welcome to reshow the welcome page. You cannot interact until you've answered the verification question."))
+			minetest.chat_send_player(name, yellow("Hello!"))
+			minetest.chat_send_player(name, yellow("Use ")..green("/welcome")..yellow(" to reshow the welcome page. You cannot interact until you've answered the verification question."))
+			minetest.chat_send_player(name, yellow("Note: If you do not verify your account it will be deleted upon leaving."))
 		end
 	end
 end)
