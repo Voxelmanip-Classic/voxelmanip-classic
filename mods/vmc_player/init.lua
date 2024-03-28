@@ -40,8 +40,8 @@ minetest.register_on_joinplayer(function(player)
 
 	player:set_sky{
 		sky_color = {
-			day_sky = "#6baaff",
-			day_horizon = "#8ab9ff",
+			day_sky = "#498af2",
+			day_horizon = "#7aa9ff",
 		}
 	}
 
